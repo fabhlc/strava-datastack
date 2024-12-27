@@ -1,0 +1,19 @@
+# DuckDB config reference:
+config:
+  send_anonymous_usage_stats: False
+  use_colors: True
+
+dbt_strava:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      schema: main
+      threads: 1
+      path: "../strava_datastack.duckdb"
+
+    prod:
+      type: duckdb
+      schema: main
+      threads: 1
+      path: "../strava_datastack.duckdb"

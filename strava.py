@@ -175,54 +175,12 @@ def strava_source(start_date: str | None = None, end_date: str | None = None):
                         "convert": lambda timestamp_str: None if timestamp_str is None else int(pendulum.parse(timestamp_str).timestamp()), # converts date string to epoch time
                     },
                 },
-            },       
-
-            # The following is an example of a resource that uses
-            # a parent resource (`activities`) to get the `activity_id`
-            # and include it in the endpoint path:
-            {
-                "name": "activity_streams",
-                "primary_key": ["_activities_id", "type"], # _activites_id comes from the parent activity; see include_from_parent
-                "max_table_nesting": 0, # the data field is an array, and this tells dlt not to flatten it out into another table (e.g. activity_streams__data); default is 1000
-                "endpoint": {
-                    # The placeholder {activity_id} will be resolved
-                    # from the parent resource
-                    "path": "activities/{activity_id}/streams",
-                    # A "manual entry" activity won't have any activity streams, and will throw a 404 error because the URL doesn't exist
-                    # This gracefully skips those situations
-                    "response_actions": [
-                        {"status_code": 404, "content": "Not Found", "action": "ignore"},
-                    ],
-                    "paginator": RateLimitedPageNumberPaginator(
-                            rate_limiter=shared_rate_limiter,
-                            base_page=1,
-                            total_path=None,
-                            # The activity_stream is returned as a single page, however,
-                            # without setting the maximum_page=1, dlt will just keep incrementing the page infintely for the same activity_stream
-                            maximum_page=1,
-                            resource_name="activity_streams"
-                        ),
-                    "params": {
-                        # specifies the desired streams types (param for strava)
-                        "keys": "time,distance,altitude,velocity_smooth,heartrate,cadence,watts,temp,moving,grade_smooth", # not used: latlng
-                        "activity_id": {
-                            "type": "resolve",
-                            "resource": "activities",
-                            "field": "id",
-                        }
-                    },
-                },
-                # Include data from `id` field of the parent resource
-                # in the child data. The field name in the child data
-                # will be called `_activities_id` (_{resource_name}_{field_name})
-                "include_from_parent": ["id"],
             },
-
             {
-                "name": "activity_zones",
+                "name": "full_load",
                 "primary_key": ["_activities_id", "type"], # _activites_id comes from the parent activity; see include_from_parent
                 "endpoint": {
-                    "path": "activities/{activity_id}/zones",
+                    "path": "activities/{activity_id}",
                     "response_actions": [
                         {"status_code": 404, "content": "Not Found", "action": "ignore"},
                     ],
@@ -231,14 +189,14 @@ def strava_source(start_date: str | None = None, end_date: str | None = None):
                             base_page=1,
                             total_path=None,
                             maximum_page=1,
-                            resource_name="activity_zones"
+                            resource_name="full_load"
                         ),
                     "params": {
                         "activity_id": {
                             "type": "resolve",
                             "resource": "activities",
                             "field": "id",
-                        }
+                        },
                     },
                 },
                 "include_from_parent": ["id"],

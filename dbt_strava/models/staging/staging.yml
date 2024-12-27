@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+  - name: strava
+    config:
+      enabled: true
+    tables:
+      - name: full_load
+
+models:
+  - name: stg_full_load
+    description: "Base data for strava data exploration cleaned and casted."
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        data_tests:
+          - unique
+## TODO: field descriptions
