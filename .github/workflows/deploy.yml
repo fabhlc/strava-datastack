@@ -24,7 +24,7 @@ jobs:
       - name: build
         working-directory: "./reports"
         env:
-          BASE_PATH: '/${{ github.event.repository.name }}'
+          BASE_PATH: '/${{ github.event.repository.name }}/reports'
           ## Add and uncomment any environment variables here
           EVIDENCE_SOURCE__strava_datastack__filename: ${{ secrets.EVIDENCE_SOURCE__strava_datastack__filename }}
         run: |
