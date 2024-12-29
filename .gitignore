@@ -19,7 +19,6 @@ wheels/
 dbt_strava/data/
 
 # ignore duckdb
-*.duckdb
 *.wal
 
 # ignore misc
