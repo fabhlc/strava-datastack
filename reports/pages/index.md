@@ -15,18 +15,23 @@ title: Hello World!
 ```
 
 
-```sql rides
-  select
-      * 
-  from strava_datastack.strava_rides
-  limit 100
-```
-
-```sql all activities
-  select
-      DATETRUNC('month', start_at_local)
+```sql sport_types
+  select DISTINCT
+      sport_type
   from strava_datastack.reporting_all_activities
-  limit 100
+```
+<Dropdown data={sport_types} name=sport value=sport_types>
+    <DropdownOption value="%" valueLabel="All Categories"/>
+</Dropdown>
+
+```sql all_activities
+  select
+      DATETRUNC('month', start_at_local) as activity_month
+    , sport_type
+    , count(1) AS activities_cnt
+  from strava_datastack.reporting_all_activities
+  where category like '${inputs.sport_types.value}'
+  GROUP BY ALL
 ```
 
 <Dropdown data={categories} name=category value=category>
