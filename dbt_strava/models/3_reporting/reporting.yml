@@ -1,8 +1,8 @@
 version: 2
 
 models:
-  - name: running
-    description: "Base data for strava data exploration cleaned and casted."
+  - name: reporting_all_activities
+    description: "All activities for high-level fitness reporting"
     columns:
       - name: id
         description: "The primary key for this table"

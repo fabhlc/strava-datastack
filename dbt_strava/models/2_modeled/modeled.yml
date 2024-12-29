@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: modeled_running
+    description: "Base data for strava running data exploration cleaned and casted."
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        data_tests:
+          - unique
+  - name: modeled_biking
+    description: "Base data for strava biking data exploration cleaned and casted."
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        data_tests:
+          - unique
+  - name: modeled_weight_training
+    description: "Base data for strava weight-training data exploration cleaned and casted."
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        data_tests:
+          - unique
