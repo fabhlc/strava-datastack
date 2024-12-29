@@ -1,70 +1,78 @@
 ---
 title: Hello World!
+neverShowQueries: true
+hideSidebar: true
 ---
-
-<Details title='How to edit this page'>
-
-  This page can be found in your project at `/pages/index.md`. Make a change to the markdown file and save it to see the change take effect in your browser.
-</Details>
-
-```sql categories
-  select
-      * 
-  from strava_datastack.strava_runs
-  limit 100
-```
-Look at this!
 
 ```sql sport_types
   select distinct
       sport_type
-  from strava_datastack.reporting_all_activities
+  from strava_datastack.activities_by_day
   where sport_type is not null
 ```
 
-<Dropdown 
-    name=sport 
-    data={sport_types}
-    value=sport_type
-    defaultValue="Run"
->
-<DropdownOption value="Run" valueLabel="Run"/>
-</Dropdown>
-
-
-<Dropdown 
-    name=sport2
-    defaultValue="Run"
->
-<DropdownOption value="Run" valueLabel="Run"/>
-<DropdownOption value="Ride" />
-</Dropdown>
-
-```sql all_activities
-  select
-      DATETRUNC('month', start_at_local) as activity_month
-    , sport_type
-    , count(1) AS activities_cnt
-  from strava_datastack.reporting_all_activities
-  WHERE sport_type in ('${inputs.sport2.value}')
+```sql all_activities_by_day
+   SELECT
+    *
+  FROM strava_datastack.activities_by_day
   GROUP BY ALL
 ```
 
+```sql all_activities_by_month
+    SELECT 
+      activity_month
+      , activity_year
+      , sport_type
+      , sum(activities_cnt)    AS activities_cnt
+      , sum(total_distance)    AS total_distance_month
+      , sum(total_moving_time) AS total_moving_time
+      , sum(total_distance_month) over (partition by activity_year, sport_type) AS total_distance_year
+    FROM ${all_activities_by_day}
+    GROUP BY 1, 2, 3
+    ORDER BY activity_month DESC
+```
+```sql all_activities_by_year
+    SELECT 
+      activity_year
+      , sport_type
+      , sum(activities_cnt)    AS activities_cnt
+      , sum(total_distance)    AS total_distance
+      , sum(total_moving_time) AS total_moving_time
+    FROM ${all_activities_by_day}
+    GROUP BY 1, 2
+    ORDER BY activity_year DESC
+```
+
+<Dropdown 
+    name=sport_types
+    value=sport_type
+    data={sport_types}
+    defaultValue="%"
+>
+<DropdownOption value="%" valueLabel="All"/>
+</Dropdown>
+
 <BarChart
-    data={all_activities}
+    data={all_activities_by_month.where(`sport_type like '${inputs.sport_types.value}'`)}
     title="Activities by Month, {inputs.sport_types.value}"
     x=activity_month
     y=activities_cnt
     series=sport_type
 />
 
+<CalendarHeatmap 
+    data={all_activities_by_day.where(`sport_type like '${inputs.sport_types.value}'`)}
+    date=activity_day
+    value=total_moving_time
+    title="Activity Calendar Heatmap"
+    subtitle="Gradient by total moving time (minutes)"
+/>
 
-## What's Next?
-- [Connect your data sources](settings)
-- Edit/add markdown files in the `pages` folder
-- Deploy your project with [Evidence Cloud](https://evidence.dev/cloud)
-
-## Get Support
-- Message us on [Slack](https://slack.evidence.dev/)
-- Read the [Docs](https://docs.evidence.dev/)
-- Open an issue on [Github](https://github.com/evidence-dev/evidence)
+How far did I go? Distance by activity
+<BarChart
+    data={all_activities_by_month.where(`sport_type = 'Run'`)}
+    title="Running distance"
+    x=activity_month
+    y=total_distance_month
+    series=sport_type
+/>
