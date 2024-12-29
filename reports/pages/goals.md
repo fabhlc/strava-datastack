@@ -48,6 +48,7 @@ title: Goals
   comparisonTitle="vs. Last Year"
 /> 
 
+
 [//]: # (TODO: Fix comparison for BigValues)
 Total running distance last year was <b><Value 
     data={all_activities_by_year}
