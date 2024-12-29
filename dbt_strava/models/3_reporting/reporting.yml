@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: reporting_all_activities
+    description: "All activities for high-level fitness reporting"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        data_tests:
+          - unique

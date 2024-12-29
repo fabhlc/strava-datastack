@@ -8,12 +8,12 @@ dbt_strava:
   outputs:
     dev:
       type: duckdb
-      schema: main
+      schema: strava_dev
       threads: 1
-      path: "../strava_datastack.duckdb"
+      path: "../reports/sources/strava_source/strava_datastack.duckdb"
 
     prod:
       type: duckdb
-      schema: main
+      schema: strava_prod
       threads: 1
       path: "../strava_datastack.duckdb"

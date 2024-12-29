@@ -1,0 +1,1 @@
+SELECT * FROM strava_dev.modeled_biking
