@@ -18,6 +18,7 @@ jobs:
           cache-dependency-path: "./reports/package-lock.json"
 
       - name: Install dependencies
+        working-directory: "./reports"
         run: npm install
 
       - name: build
