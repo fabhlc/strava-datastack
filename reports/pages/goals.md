@@ -58,9 +58,6 @@ Total running distance last year was <b><Value
     color="#85BB65"
 />km</b>. The goal for 2025 would be an additional 100km, so <b>650km</b>! I'll set a pace to achieve.
 
-
-staggered chart
-Live Counter 
-
-
-Use Alert? If/Else
+TODO:
+- chart against staggered goals
+- Live Counter for month  + Use Alert? If/Else
