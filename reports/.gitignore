@@ -7,3 +7,4 @@ static/data
 .vscode/settings.json
 .env
 .evidence/meta
+.evidence/template
