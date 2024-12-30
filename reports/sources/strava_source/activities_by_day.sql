@@ -6,5 +6,5 @@ SELECT
 , count(1) AS activities_cnt
 , sum(distance) AS total_distance
 , sum(moving_time) AS total_moving_time
-FROM strava_datastack.strava_dev.reporting_all_activities
+FROM strava_dev.reporting_all_activities
 GROUP BY ALL

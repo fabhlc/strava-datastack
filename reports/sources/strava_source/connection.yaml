@@ -1,8 +1,8 @@
 # This file was automatically generated
-name: strava_datastack
+name: strava_source
 type: duckdb
 options:
-  filename: strava_datastack.duckdb
+  filename: ../../../strava_datastack.duckdb
 #
 #name: needful_things
 #type: duckdb

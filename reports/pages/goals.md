@@ -11,7 +11,7 @@ title: Goals
       , sum(total_distance)    AS total_distance_month
       , sum(total_moving_time) AS total_moving_time
       , sum(total_distance_month) over (partition by activity_year, sport_type) AS total_distance_year
-    FROM strava_datastack.activities_by_day
+    FROM strava_source.activities_by_day
     WHERE sport_type = 'Run'
     GROUP BY 1, 2, 3
     ORDER BY activity_month DESC
@@ -23,7 +23,7 @@ title: Goals
       , sum(activities_cnt)    AS activities_cnt
       , sum(total_distance)    AS total_distance
       , sum(total_moving_time) AS total_moving_time
-    FROM strava_datastack.activities_by_day
+    FROM strava_source.activities_by_day
     WHERE sport_type = 'Run'
     GROUP BY 1, 2
     ORDER BY activity_year DESC
