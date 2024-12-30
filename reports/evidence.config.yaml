@@ -80,4 +80,4 @@ plugins:
     "@evidence-dev/motherduck": { }
 
 deployment:
-  basePath: /strava_datastack
+  basePath: /strava-datastack
