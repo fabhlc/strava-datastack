@@ -7,14 +7,14 @@ hideSidebar: true
 ```sql sport_types
   select distinct
       sport_type
-  from strava_datastack.activities_by_day
+  from strava_source.activities_by_day
   where sport_type is not null
 ```
 
 ```sql all_activities_by_day
    SELECT
     *
-  FROM strava_datastack.activities_by_day
+  FROM strava_source.activities_by_day
   GROUP BY ALL
 ```
 
