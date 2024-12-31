@@ -1,0 +1,1 @@
+import r from"fs";import o from"path";const c=!0,p=()=>{const e=o.join(process.cwd(),"src","fix-tprotocol-service-worker.js");let t=r.readFileSync(e,"utf-8");return new Response(t,{headers:{"Content-Type":"application/javascript"}})};export{p as GET,c as prerender};

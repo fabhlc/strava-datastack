@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="/strava-datastack/favicon.ico" sizes="32x32" />
+		<link rel="icon" href="/strava-datastack/icon.svg" type="image/svg+xml" />
+		<link rel="apple-touch-icon" href="/strava-datastack/apple-touch-icon.png" />
+		<link rel="manifest" href="/strava-datastack/manifest.webmanifest" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script>
+			try {
+				/** @type {'light' | 'dark' | 'system'} */
+				const savedTheme = localStorage.getItem('evidence-theme') ?? 'system';
+				const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+				const theme = savedTheme === 'system' ? (prefersDark ? 'dark' : 'light') : savedTheme;
+				document.documentElement.setAttribute('data-theme', theme);
+			} catch (e) {}
+		</script>
+		
+		<link href="/strava-datastack/_app/immutable/assets/0.BzLJFuxn.css" rel="stylesheet">
+		<link href="/strava-datastack/_app/immutable/assets/VennDiagram.DBCXi1Yl.css" rel="stylesheet">
+		<link rel="modulepreload" href="/strava-datastack/_app/immutable/entry/start.DsvTTw9b.js">
+		<link rel="modulepreload" href="/strava-datastack/_app/immutable/chunks/entry.CDRQ1AgC.js">
+		<link rel="modulepreload" href="/strava-datastack/_app/immutable/chunks/scheduler.6BPHMyHF.js">
+		<link rel="modulepreload" href="/strava-datastack/_app/immutable/entry/app.DOXZ2NU6.js">
+		<link rel="modulepreload" href="/strava-datastack/_app/immutable/chunks/preload-helper.AVeyy5YT.js">
+		<link rel="modulepreload" href="/strava-datastack/_app/immutable/chunks/index.WoIgux7t.js">
+		<link rel="modulepreload" href="/strava-datastack/_app/immutable/nodes/0.C6MNv0ha.js">
+		<link rel="modulepreload" href="/strava-datastack/_app/immutable/chunks/VennDiagram.svelte_svelte_type_style_lang.BDD9Z112.js">
+		<link rel="modulepreload" href="/strava-datastack/_app/immutable/chunks/index.rV6zwFgL.js">
+		<link rel="modulepreload" href="/strava-datastack/_app/immutable/chunks/setTrackProxy.DjIbdjlZ.js">
+		<link rel="modulepreload" href="/strava-datastack/_app/immutable/chunks/stores.Dqe63C7D.js">
+		<link rel="modulepreload" href="/strava-datastack/_app/immutable/chunks/index.CqVitEmB.js">
+		<link rel="modulepreload" href="/strava-datastack/_app/immutable/chunks/updater.VbPrGvGM.js">
+		<link rel="modulepreload" href="/strava-datastack/_app/immutable/chunks/button.BIRK_Iwq.js">
+		<link rel="modulepreload" href="/strava-datastack/_app/immutable/chunks/AccordionItem.CRjnQ9DB.js">
+		<link rel="modulepreload" href="/strava-datastack/_app/immutable/nodes/7.BMNeD1OP.js">
+		<link rel="modulepreload" href="/strava-datastack/_app/immutable/chunks/QueryViewer.FTHLwZno.js">
+		<link rel="modulepreload" href="/strava-datastack/_app/immutable/chunks/Prismjs.BcRwqRJP.js"><title>Goals</title><!-- HEAD_svelte-6lktun_START --> <meta property="og:title" content="Goals"> <meta name="twitter:title" content="Goals"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@evidence_dev"> <!-- HEAD_svelte-6lktun_END -->
+	</head>
+	<body>
+		<script>
+			
+		</script>
+		<div>
+			<!-- SvelteKit Hydrated Content -->
+			   <div class="z-[1] fixed right-0 bottom-0 mx-10 my-6 w-80"></div> <div data-sveltekit-preload-data="hover" class="antialiased"> <header class="fixed w-full top-0 z-40 flex h-12 shrink-0 justify-start items-center gap-x-4 border-b border-base-300/50 bg-base-100/90 backdrop-blur print:hidden "><div class=" max-w-7xl mx-auto px-6 sm:px-8 md:px-12 flex flex-1 items-center justify-between" style="max-width:undefinedpx;"><div class="flex gap-x-4 items-center"><button type="button" class="text-base-content hover:bg-base-200 rounded-lg p-1 transition-all duration-500 md:hidden"><span class="sr-only" data-svelte-h="svelte-73kebv">Open sidebar</span> <svg class="w-5 h-5" width="100%" height="100%" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M4 6l16 0"></path><path d="M4 12l16 0"></path><path d="M4 18l16 0"></path></svg></button> <a href="/strava-datastack/" class="text-sm font-bold text-base-content hidden md:block"><img src="/strava-datastack/_app/immutable/assets/wordmark-black.rfl-FBgf.png" alt="Home" class="h-5 aspect-auto block dark:hidden" href="/strava-datastack/"> <img src="/strava-datastack/_app/immutable/assets/wordmark-white.C8ZS96Ri.png" alt="Home" class="h-5 aspect-auto hidden dark:block" href="/strava-datastack/"></a></div> <div class="flex gap-2 text-sm items-center"> <div class="flex gap-2 items-center">   </div> <div class="relative"> <button type="button" tabindex="0" aria-controls="0XLiNFdCI1" aria-expanded="false" data-state="closed" id="qzvuS_dbh5" data-melt-dropdown-menu-trigger="" data-menu-trigger="" class="inline-flex items-center justify-center font-medium whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-base-content-muted disabled:pointer-events-none disabled:opacity-50 hover:text-base-content h-8 rounded-md text-xs px-1 hover:bg-base-200 shadow-base-200" aria-label="Menu" data-button-root=""><svg class="h-6 w-6" width="100%" height="100%" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M5 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path><path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path><path d="M19 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path></svg></button> </div></div></div></header> <div class=" max-w-7xl print:w-[650px] print:md:w-[841px] mx-auto print:md:px-0 print:px-0 px-6 sm:px-8 md:px-12 flex justify-start" style="max-width:undefinedpx;"><div class="print:hidden">  <aside class="w-48 flex-none hidden md:flex"><div class="hidden: md:block fixed w-48 top-20 bottom-8 overflow-y-auto flex-1 text-sm pretty-scrollbar"><div class="flex flex-col pb-6"><a class="sticky top-0 bg-base-100 shadow shadow-base-100 font-semibold pb-1 mb-1 group inline-block capitalize hover:underline text-base-heading" href="/strava-datastack/">Home</a>  <a class="group inline-block py-1 capitalize transition-all duration-100 text-base-content-muted hover:text-base-content" href="/strava-datastack/goals">Goals  </a></div> </div> </aside></div> <main class="md:pl-8 md:pr-8  mt-16 sm:mt-20 flex-grow overflow-x-hidden print:px-0 print:mt-8"><div class="print:hidden"><div class="flex items-start mt-0 whitespace-nowrap overflow-auto"><div class="inline-flex items-center text-sm capitalize gap-1 text-base-content-muted mb-2 sm:mb-4"><a href="/strava-datastack/" class="hover:underline">Home </a><svg class="icon icon-tabler icon-tabler-chevron-right" width="12px" height="12px" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M9 6l6 6l-6 6"></path></svg> <a href="/strava-datastack/goals" class="hover:underline">Goals</a></div></div></div> <article id="evidence-main-article" class="select-text markdown pb-10">  <h1 class="title">Goals</h1>    <div class="over-container svelte-1p12lev"> </div> <div class="over-container svelte-1p12lev"> </div>   <div class="inline-block font-sans pt-2 pb-3 pr-3 pl-0 mr-3 items-center align-top" style="
+        min-width: 18%;
+        max-width: none;
+    "><p class="text-sm">Total Distance Month</p> <div class="relative text-xl font-medium my-0.5"><a class="hover:bg-base-200" href="/strava-datastack/index">   <span style="color: ">26.7</span></a>    <div class="inline-block align-baseline" style="width: 50px; height: 15px;"><!-- HTML_TAG_START --><svg width="50" height="15" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 50 15">
+<rect width="50" height="15" x="0" y="0" fill="none"></rect>
+<path d="M0 15.5L50 15.5" fill="transparent" stroke="#6E7079" stroke-linecap="round" class="zr2-cls-8"></path>
+<g clip-path="url(#zr2-c0)">
+<path d="M1 14.3L3.1 11.2L5 12.3L7.1 10.3L9.2 6.9L11.3 13.7L13.4 4.6L15.5 9.2L17.6 10L19.7 8.7L21.8 11.6L23.9 12.8L26 13L28.2 6.5L30.2 8.7L32.3 10.6L34.3 8.3L36.5 10.7L38.5 8.7L40.7 5.9L42.8 2.4L44.8 9.3L47 14.4L49 11.7L49 15L47 15L44.8 15L42.8 15L40.7 15L38.5 15L36.5 15L34.3 15L32.3 15L30.2 15L28.2 15L26 15L23.9 15L21.8 15L19.7 15L17.6 15L15.5 15L13.4 15L11.3 15L9.2 15L7.1 15L5 15L3.1 15L1 15Z" fill="transparent" fill-opacity="0.7" class="zr2-cls-10"></path>
+<path d="M1 14.3L3.1 11.2L5 12.3L7.1 10.3L9.2 6.9L11.3 13.7L13.4 4.6L15.5 9.2L17.6 10L19.7 8.7L21.8 11.6L23.9 12.8L26 13L28.2 6.5L30.2 8.7L32.3 10.6L34.3 8.3L36.5 10.7L38.5 8.7L40.7 5.9L42.8 2.4L44.8 9.3L47 14.4L49 11.7" fill="transparent" stroke="#717171" stroke-linejoin="bevel" class="zr2-cls-11"></path>
+</g>
+<path d="M-5 -5l10 0l0 10l-10 0Z" transform="translate(5 5)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#ccc" stroke-width="0" class="zr2-cls-8"></path>
+<defs >
+<clipPath id="zr2-c0">
+<path d="M-1 -0.5l52 0l0 16l-52 0Z" fill="#000" class="zr2-cls-9"></path>
+</clipPath>
+</defs>
+<style ><![CDATA[
+.zr2-cls-8:hover {
+pointer-events:none;
+}
+.zr2-cls-9:hover {
+cursor:pointer;
+fill:rgba(0,0,0,1);
+}
+.zr2-cls-10:hover {
+cursor:pointer;
+fill:rgba(0,0,0,0);
+}
+.zr2-cls-11:hover {
+cursor:pointer;
+}
+
+]]>
+
+</style>
+</svg><!-- HTML_TAG_END --></div></div> <p class="text-xs font-sans">   <span class="m-0 text-xs font-ui inline-block rounded-md text-positive"><span style="text-align: right;"><span class="font-[system-ui]"><!-- HTML_TAG_START -->&#9650;<!-- HTML_TAG_END --></span> <span>2,671.8%</span> <span>vs. Last Month</span></span></span></p></div>   <div class="inline-block font-sans pt-2 pb-3 pr-3 pl-0 mr-3 items-center align-top" style="
+        min-width: 18%;
+        max-width: none;
+    "><p class="text-sm">Total Distance</p> <div class="relative text-xl font-medium my-0.5">   <span style="color: ">559</span>    <div class="inline-block align-baseline" style="width: 50px; height: 15px;"><!-- HTML_TAG_START --><svg width="50" height="15" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 50 15">
+<rect width="50" height="15" x="0" y="0" fill="none"></rect>
+<path d="M0 15.5L50 15.5" fill="transparent" stroke="#6E7079" stroke-linecap="round" class="zr3-cls-12"></path>
+<g clip-path="url(#zr3-c0)">
+<path d="M1 4.1L49 1L49 15L1 15Z" fill="transparent" fill-opacity="0.7" class="zr3-cls-14"></path>
+<path d="M1 4.1L49 1" fill="transparent" stroke="#717171" stroke-linejoin="bevel" class="zr3-cls-15"></path>
+</g>
+<path d="M-5 -5l10 0l0 10l-10 0Z" transform="translate(5 5)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#ccc" stroke-width="0" class="zr3-cls-12"></path>
+<defs >
+<clipPath id="zr3-c0">
+<path d="M-1 -0.5l52 0l0 16l-52 0Z" fill="#000" class="zr3-cls-13"></path>
+</clipPath>
+</defs>
+<style ><![CDATA[
+.zr3-cls-12:hover {
+pointer-events:none;
+}
+.zr3-cls-13:hover {
+cursor:pointer;
+fill:rgba(0,0,0,1);
+}
+.zr3-cls-14:hover {
+cursor:pointer;
+fill:rgba(0,0,0,0);
+}
+.zr3-cls-15:hover {
+cursor:pointer;
+}
+
+]]>
+
+</style>
+</svg><!-- HTML_TAG_END --></div></div> <p class="text-xs font-sans">   <span class="m-0 text-xs font-ui inline-block rounded-md text-positive"><span style="text-align: right;"><span class="font-[system-ui]"><!-- HTML_TAG_START -->&#9650;<!-- HTML_TAG_END --></span> <span>55,857%</span> <span>vs. Last Year</span></span></span></p></div> <p class="markdown">Total running distance last year was <b> <span style="color: #85BB65">559</span>km</b>. The goal for 2025 would be an additional 100km, so <b data-svelte-h="svelte-1a37sev">650km</b>! I&#39;ll set a pace to achieve.</p> <p class="markdown" data-svelte-h="svelte-k81rl6">TODO:</p> <ul class="markdown" data-svelte-h="svelte-gnpbc4"><li class="markdown">chart against staggered goals</li> <li class="markdown">Live Counter for month  + Use Alert? If/Else</li></ul></article></main> <div class="print:hidden"><aside class="hidden lg:block w-48"><div class="fixed w-48 top-20 bottom-20 pl-4 px-3 overflow-auto pretty-scrollbar"></div></aside></div></div></div>  
+			<script type="application/json" data-sveltekit-fetched data-url="/strava-datastack/api/customFormattingSettings.json/GET.json">{"status":200,"statusText":"","headers":{},"body":"{\"customFormattingSettings\":{\"version\":\"1.0\",\"customFormats\":[]}}"}</script>
+			<script type="application/json" data-sveltekit-fetched data-url="/strava-datastack/api/pagesManifest.json">{"status":200,"statusText":"","headers":{},"body":"{\"label\":\"Home\",\"href\":\"/\",\"children\":{\"goals\":{\"label\":\"goals\",\"href\":\"/goals\",\"children\":{},\"frontMatter\":{\"title\":\"Goals\"},\"isTemplated\":false,\"isPage\":true}},\"frontMatter\":{\"title\":\"Hello World!\"},\"isTemplated\":false,\"isPage\":true}"}</script>
+			<script type="application/json" data-sveltekit-fetched data-url="/strava-datastack/api//goals/evidencemeta.json">{"status":200,"statusText":"","headers":{},"body":"{\"queries\":[{\"id\":\"all_activities_by_month\",\"compiledQueryString\":\"SELECT \\n      activity_month\\n      , activity_year\\n      , sport_type\\n      , sum(activities_cnt)    AS activities_cnt\\n      , sum(total_distance)    AS total_distance_month\\n      , sum(total_moving_time) AS total_moving_time\\n      , sum(total_distance_month) over (partition by activity_year, sport_type) AS total_distance_year\\n    FROM strava_source.activities_by_day\\n    WHERE sport_type = 'Run'\\n    GROUP BY 1, 2, 3\\n    ORDER BY activity_month DESC\",\"inputQueryString\":\"SELECT \\n      activity_month\\n      , activity_year\\n      , sport_type\\n      , sum(activities_cnt)    AS activities_cnt\\n      , sum(total_distance)    AS total_distance_month\\n      , sum(total_moving_time) AS total_moving_time\\n      , sum(total_distance_month) over (partition by activity_year, sport_type) AS total_distance_year\\n    FROM strava_source.activities_by_day\\n    WHERE sport_type = 'Run'\\n    GROUP BY 1, 2, 3\\n    ORDER BY activity_month DESC\",\"compiled\":false,\"inline\":true},{\"id\":\"all_activities_by_year\",\"compiledQueryString\":\"SELECT \\n      activity_year\\n      , sport_type\\n      , sum(activities_cnt)    AS activities_cnt\\n      , sum(total_distance)    AS total_distance\\n      , sum(total_moving_time) AS total_moving_time\\n    FROM strava_source.activities_by_day\\n    WHERE sport_type = 'Run'\\n    GROUP BY 1, 2\\n    ORDER BY activity_year DESC\",\"inputQueryString\":\"SELECT \\n      activity_year\\n      , sport_type\\n      , sum(activities_cnt)    AS activities_cnt\\n      , sum(total_distance)    AS total_distance\\n      , sum(total_moving_time) AS total_moving_time\\n    FROM strava_source.activities_by_day\\n    WHERE sport_type = 'Run'\\n    GROUP BY 1, 2\\n    ORDER BY activity_year DESC\",\"compiled\":false,\"inline\":true}]}"}</script>
+			<script>
+				{
+					__sveltekit_4uy2ke = {
+						base: "/strava-datastack",
+						assets: "/strava-datastack"
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null];
+
+					Promise.all([
+						import("/strava-datastack/_app/immutable/entry/start.DsvTTw9b.js"),
+						import("/strava-datastack/_app/immutable/entry/app.DOXZ2NU6.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 7],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		
+		</div>
+
+		<!-- SplashScreen -->
+		<div
+			aria-disabled
+			id="__evidence_project_splash"
+			data-test-id="__evidence_project_splash"
+			class="fixed inset-0 w-screen h-screen flex items-center justify-center z-[9999] bg-base-100"
+			style="visibility: hidden"
+		>
+			<svg
+				width="100"
+				height="100"
+				viewBox="-8 -8 588 588"
+				xmlns="http://www.w3.org/2000/svg"
+				fill="currentColor"
+				class="animate-pulse"
+			>
+				<path
+					d="M7.19462e-05 74.3583C109.309 74.3583 195.795 86.2578 286.834 37.825C377.872 -10.6077 466.416 1.29174 573.667 1.29175L573.667 126.549C466.416 126.549 377.373 114.91 286.834 163.082C196.294 211.254 109.309 199.615 6.11417e-05 199.615L7.19462e-05 74.3583Z"
+				/>
+				<path
+					d="M573.669 499.31C464.36 499.31 377.874 487.411 286.835 535.843C195.797 584.276 107.252 572.377 0.0014801 572.377V447.12C107.252 447.12 196.295 458.758 286.835 410.586C377.375 362.415 464.36 374.053 573.669 374.053V499.31Z"
+				/>
+				<path
+					d="M452.896 186.499C395.028 187.686 341.581 194.947 286.835 224.074C211.396 264.212 136.995 262.826 52.2355 261.247C35.2696 260.931 17.8887 260.608 0.0014801 260.608V385.865C18.1032 385.865 35.6721 386.204 52.81 386.534C137.212 388.162 211.162 389.589 286.835 349.331C341.838 320.07 395.18 312.831 452.896 311.685V186.499Z"
+				/>
+			</svg>
+		</div>
+	</body>
+</html>

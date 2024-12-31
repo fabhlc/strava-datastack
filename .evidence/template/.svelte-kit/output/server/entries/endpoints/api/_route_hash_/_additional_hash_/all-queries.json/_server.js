@@ -1,0 +1,1 @@
+import{get_all_page_queries as o}from"@evidence-dev/universal-sql";import{e as r}from"../../../../../../chunks/index.js";const h=({params:e})=>{try{return new Response(o(e.route_hash,e.additional_hash))}catch{throw r(404,"not found")}};export{h as GET};

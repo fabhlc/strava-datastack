@@ -1,0 +1,1 @@
+import{get_cache_for_hash as o}from"@evidence-dev/universal-sql";import{e}from"../../../../../chunks/index.js";const s=({params:r})=>{try{return new Response(o(r.query_hash))}catch{throw e(404,"not found")}};export{s as GET};
