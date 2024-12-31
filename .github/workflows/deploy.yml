@@ -22,7 +22,6 @@ jobs:
 
       - name: build
         env:
-          BASE_PATH: '/${{ github.event.repository.name }}'
           ## Add and uncomment any environment variables here
           EVIDENCE_SOURCE__STRAVA_DATASTACK__FILENAME: ${{ secrets.EVIDENCE_SOURCE__STRAVA_DATASTACK__FILENAME   }}
         run: |
