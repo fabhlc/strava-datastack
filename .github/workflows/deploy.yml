@@ -32,10 +32,9 @@ jobs:
           npm run build
 
       - name: Upload Artifacts
-        working-directory: "./reports"
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './build/strava-datastack'
+          path: './reports/build/strava-datastack'
 
   deploy:
     needs: build
