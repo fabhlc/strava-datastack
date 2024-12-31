@@ -1,0 +1,10 @@
+# This file was automatically generated
+name: strava_source
+type: duckdb
+options:
+  filename: ../../strava_datastack.duckdb
+#
+#name: needful_things
+#type: duckdb
+#options:
+#  filename: needful_things.duckdb

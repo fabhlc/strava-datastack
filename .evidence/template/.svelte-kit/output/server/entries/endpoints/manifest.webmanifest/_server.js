@@ -1,0 +1,1 @@
+import{b as e}from"../../../chunks/paths.js";const i=!0,s={icons:[{src:`${e}/icon-192.png`,type:"image/png",sizes:"192x192"},{src:`${e}/icon-512.png`,type:"image/png",sizes:"512x512"}]},o=()=>new Response(JSON.stringify(s));export{o as GET,i as prerender};
