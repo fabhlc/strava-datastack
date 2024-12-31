@@ -1,7 +1,6 @@
 ---
 title: Hello World!
 neverShowQueries: true
-hideSidebar: true
 ---
 
 ```sql sport_types
