@@ -25,13 +25,13 @@ dbt_strava/data/
 .DS_Store
 
 # ignore stuff in reports
-reports/.svelte-kit
-reports/build
-reports/node_modules
-reports/.DS_Store
-reports/static/data
+reports/.svelte-kit/
+reports/build/
+reports/node_modules/
+reports/.DS_Store/
+reports/static/data/
 reports/*.options.yaml
 reports/.vscode/settings.json
-reports/.env
-reports/.evidence/meta
-reports/.evidence/template
+reports/.env/
+reports/.evidence/meta/
+reports/.evidence/template/
