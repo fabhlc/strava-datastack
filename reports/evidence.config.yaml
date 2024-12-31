@@ -79,5 +79,3 @@ plugins:
     "@evidence-dev/trino": { }
     "@evidence-dev/motherduck": { }
 
-deployment:
-  basePath: /strava-datastack
