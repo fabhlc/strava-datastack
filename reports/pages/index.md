@@ -1,5 +1,5 @@
 ---
-title: Hello World!
+title: My Strava Activities
 neverShowQueries: true
 ---
 
@@ -42,6 +42,10 @@ neverShowQueries: true
     ORDER BY activity_year DESC
 ```
 
+# All Strava Activities
+Below is my activities for the past few years. You can see I took up running in lieu of biking in the last year compared to 2023.
+You can also see when I was injured and unable to run (November 2024 Weight Training frequency went up).
+
 <Dropdown 
     name=sport_types
     value=sport_type
@@ -50,7 +54,6 @@ neverShowQueries: true
 >
 <DropdownOption value="%" valueLabel="All"/>
 </Dropdown>
-
 <BarChart
     data={all_activities_by_month.where(`sport_type like '${inputs.sport_types.value}'`)}
     title="Activities by Month, {inputs.sport_types.value}"
@@ -59,6 +62,7 @@ neverShowQueries: true
     series=sport_type
 />
 
+By cumulative moving time per day, the days where it surpassed 200mins were when I went for a Gran Fondo.
 <CalendarHeatmap 
     data={all_activities_by_day.where(`sport_type like '${inputs.sport_types.value}'`)}
     date=activity_day
@@ -67,7 +71,9 @@ neverShowQueries: true
     subtitle="Gradient by total moving time (minutes)"
 />
 
-How far did I go? Distance by activity
+# Running
+
+Below is how far I've run by month. I was shocked to see myself reach 100km in September, but it makes sense given that I was gunning for a half marathon that month and training to hit that (awful) 22km run.
 <BarChart
     data={all_activities_by_month.where(`sport_type = 'Run'`)}
     title="Running distance"
