@@ -80,4 +80,11 @@ Below is how far I've run by month. I was shocked to see myself reach 100km in S
     x=activity_month
     y=total_distance_month
     series=sport_type
-/>
+>
+<Callout x="2024-09-01" y=100 labelPosition=top labelWidth=fit>
+        Half-Marathon
+    </Callout>
+<Callout x="2024-11-01" y=5 labelPosition=top labelWidth=fit>
+        Injury
+    </Callout>
+</BarChart>
