@@ -1,0 +1,1 @@
+SELECT * FROM {{ ref("modeled_runs_against_goals") }}

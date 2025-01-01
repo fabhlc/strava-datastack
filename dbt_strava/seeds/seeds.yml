@@ -1,0 +1,6 @@
+seeds:
+  - name: running_goals2025
+    config:
+      enabled: true
+      full_refresh: true
+      schema: seeds
