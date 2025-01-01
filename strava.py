@@ -5,6 +5,9 @@ import time
 from datetime import datetime, timedelta
 from typing import Any
 
+import duckdb
+import numpy
+
 # Third-Party Imports
 import dlt
 from dlt.sources.helpers.rest_client.auth import OAuth2ClientCredentials
@@ -206,6 +209,48 @@ def strava_source(start_date: str | None = None, end_date: str | None = None):
 
     yield from rest_api_resources(config)
 
+def save_public_db():
+    con = duckdb.connect("strava_datastack.duckdb")
+    full_load_df = con.sql("SELECT * FROM strava.full_load").df()
+    con_new = duckdb.connect("strava.duckdb")
+    con_new.sql(
+        """
+        DROP TABLE IF EXISTS main.full_load;
+        CREATE TABLE main.full_load AS
+            SELECT
+                 id
+                , name
+                , distance
+                , moving_time
+                , total_elevation_gain
+                , sport_type
+                , start_date_local
+                , achievement_count
+                , kudos_count
+                , description -- future data collection, assess how to capture
+                , calories
+                , comment_count
+                , photo_count
+                , average_speed -- identify measure
+                , max_speed -- identify measure
+                , has_heartrate
+                , average_heartrate
+                , max_heartrate
+                , pr_count
+                , has_kudoed
+                , gear_id
+                , workout_type -- understand more
+                , average_cadence -- understand more
+                , similar_activities__min_average_speed
+                , similar_activities__mid_average_speed
+                , similar_activities__max_average_speed
+            FROM full_load_df;
+        """)
+
+    con.close()
+    con_new.close()
+    print("Saved public duckdb to main.full_load!")
+
 def load_strava() -> None:
     args = parse_arguments()
     start_date = args.start_date
@@ -224,3 +269,4 @@ def load_strava() -> None:
 
 if __name__ == "__main__":
     load_strava()
+    save_public_db()

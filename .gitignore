@@ -20,6 +20,7 @@ dbt_strava/data/
 
 # ignore duckdb
 *.wal
+strava_datastack.duckdb
 
 # ignore misc
 .DS_Store
