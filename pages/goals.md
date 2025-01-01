@@ -2,7 +2,6 @@
 title: Goals
 ---
 
-
 ```sql runs
     SELECT
       activity_month
@@ -14,7 +13,6 @@ title: Goals
     GROUP BY 1,2
     ORDER BY 1 DESC
 ```
-
 ```sql runs_by_year
     SELECT
       activity_year
@@ -27,10 +25,8 @@ title: Goals
 
 <DataTable data={runs}/>
 
-
 <BigValue
   data={runs}
-  link=index
   value=total_distance_month
   sparkline=activity_month
   comparison=total_distance_month
