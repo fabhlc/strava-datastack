@@ -17,3 +17,5 @@ models:
         data_tests:
           - unique
 ## TODO: field descriptions
+  - name: stg_running_goals
+    description: "Running goals for 2025. A seed file."
