@@ -42,8 +42,7 @@ neverShowQueries: true
     ORDER BY activity_year DESC
 ```
 
-# All Strava Activities
-Below is my activities for the past few years. You can see I took up running in lieu of biking in the last year compared to 2023.
+Below are my activities for the past few years. You can see I took up running in lieu of biking in 2024 compared to the previous year.
 You can also see when I was injured and unable to run (November 2024 Weight Training frequency went up).
 
 <Dropdown 
