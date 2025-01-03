@@ -1,68 +1,39 @@
 ---
-title: Goals (WIP)
+title: Goals for 2025
 ---
 
-```sql runs
-    SELECT
-      *
-      , LAG(total_distance_month) OVER (ORDER BY activity_month ASC) AS total_distance_prev_month
-      , total_distance_month/total_distance_prev_month-1.00 AS total_distance_month_growth
-    FROM (SELECT activity_month
-               , activity_year
-               , SUM(total_distance) AS total_distance_month
-               , COUNT(*)            AS activities
-          FROM strava_source.activities_by_day
-          WHERE sport_type = 'Run'
-          GROUP BY 1, 2)
-      ORDER BY 1 DESC
-```
-```sql runs_by_year
-    SELECT
-      *
-      , LAG(total_distance_year) OVER (ORDER BY activity_year ASC) AS total_distance_prev_year
-      , total_distance_year/total_distance_prev_year-1.00 AS total_distance_year_growth
-    FROM (
-        SELECT 
-          activity_year
-          , SUM(total_distance_month) AS total_distance_year
-          , SUM(activities) AS activities
-        FROM ${runs}
-        GROUP BY 1
-        )
-    ORDER BY 1 DESC
-```
 ```sql runs_against_goals
   SELECT
   run_month
   , category
   , distance
   , goal
+  , (DATE_PART('day', CURRENT_DATE)/ DATE_PART('day', LAST_DAY(CURRENT_DATE)))::FLOAT AS pct_of_month
+  , goal*pct_of_month AS prorated_goal
+  , CASE WHEN category = 'Actual' THEN distance>=prorated_goal 
+    ELSE NULL END AS is_on_track
   FROM strava_source.runs_against_goals
   WHERE run_month >= '2024-06-01'
-
+  ORDER BY run_month DESC
+```
+```sql runs_against_goals_this_month
+  SELECT
+    *
+  FROM ${runs_against_goals}
+  WHERE 
+    run_month::DATE = DATE_TRUNC('month', CURRENT_DATE)
+    AND category = 'Actual'
+```
+```sql today
+  SELECT CURRENT_DATE()
 ```
 
-<BigValue
-  data={runs}
-  value=total_distance_month
-  sparkline=activity_month
-  comparison=total_distance_month_growth
-  comparisonFmt=pct1
-  comparisonTitle="vs. Last Month"
-/>
+<LastRefreshed/>
+<br>
 
-<BigValue
-  data={runs_by_year}
-  value=total_distance_year
-  sparkline=activity_year
-  comparison=total_distance_year_growth
-  comparisonFmt=pct 
-  comparisonTitle="vs. Last Year"
-/>
+Below are my run goals for the upcoming months of 2025. I'd like to run <b>100km for 3 months</b> in 2025 and a certain number of km for other months.
+Here's how I'll track how I'm doing:
 
-
-<br/><br/>
-Below are my goals for the upcoming months of 2025. I'd like to run <b>100km for 3 months</b> in 2025 and a certain number of km for other months.
 <BarChart
   data={runs_against_goals}
   title="Run vs. Goal"
@@ -70,5 +41,55 @@ Below are my goals for the upcoming months of 2025. I'd like to run <b>100km for
   y=distance
   series=category
   yMin=0
-  
 />
+
+<br>
+
+## Pacing (as of <Value data={today} fmt='longdate'/>)
+
+[//]: # (<BigValue)
+
+[//]: # (  data={runs})
+
+[//]: # (  value=total_distance_month)
+
+[//]: # (  sparkline=activity_month)
+
+[//]: # (  comparison=total_distance_month_growth)
+
+[//]: # (  comparisonFmt=pct1)
+
+[//]: # (  comparisonTitle="vs. Last Month")
+
+[//]: # (/>)
+
+  Monthly Goal: <b><Value 
+    data={runs_against_goals_this_month}
+    column=goal
+    fmt='#.#1'
+  />km</b>
+
+  Distance Ran: <b><Value 
+    data={runs_against_goals_this_month}
+    column=distance
+    fmt='#.#1'
+  />km</b>
+
+  Pro-Rated Goal (month-to-date): <b><Value 
+    data={runs_against_goals_this_month}
+    column=prorated_goal
+    fmt='#.#1'
+  />km</b>
+<br>
+{#if runs_against_goals_this_month.is_on_track = true}
+  <Alert status="success">
+  I'm on track to hit my monthly goal! 🚀
+  </Alert> 
+  
+
+{:else}
+  <Alert status="success">
+  I'm a bit behind my goal. Let's pick up the pace! 
+  </Alert> 
+
+{/if}
