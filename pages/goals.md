@@ -1,5 +1,5 @@
 ---
-title: Goals for 2025
+title: Tracking Against 2025
 ---
 
 ```sql runs_against_goals
@@ -45,7 +45,7 @@ Here's how I'll track how I'm doing:
 
 <br>
 
-## Pacing (as of <Value data={today} fmt='longdate'/>)
+## Pacing
 
 [//]: # (<BigValue)
 
@@ -63,33 +63,30 @@ Here's how I'll track how I'm doing:
 
 [//]: # (/>)
 
-  Monthly Goal: <b><Value 
-    data={runs_against_goals_this_month}
-    column=goal
-    fmt='#.#1'
-  />km</b>
-
-  Distance Ran: <b><Value 
-    data={runs_against_goals_this_month}
-    column=distance
-    fmt='#.#1'
-  />km</b>
-
-  Pro-Rated Goal (month-to-date): <b><Value 
-    data={runs_against_goals_this_month}
-    column=prorated_goal
-    fmt='#.#1'
-  />km</b>
-<br>
-{#if runs_against_goals_this_month.is_on_track = true}
+{#if $runs_against_goals_this_month.is_on_track == 'true'}
   <Alert status="success">
-  I'm on track to hit my monthly goal! 🚀
+  As of <b><Value data={today} fmt='longdate'/></b>, I'm on track to hit my monthly goal! 🚀
   </Alert> 
-  
 
 {:else}
-  <Alert status="success">
-  I'm a bit behind my goal. Let's pick up the pace! 
+  <Alert status="danger">
+  As of <b><Value data={today} fmt='longdate'/></b>, I'm a bit behind my goal. Let's pick up the pace!
   </Alert> 
 
 {/if}
+Monthly Goal: &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b><Value 
+data={runs_against_goals_this_month}
+column=goal
+/>km</b>
+
+Distance Ran: &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b><Value 
+data={runs_against_goals_this_month}
+column=distance
+fmt='#.#1'
+/>km</b>
+
+Pro-Rated Goal (month-to-date): &emsp;<b><Value 
+data={runs_against_goals_this_month}
+column=prorated_goal
+fmt='#.#1'
+/>km</b>
