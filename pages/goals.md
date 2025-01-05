@@ -45,7 +45,7 @@ Here's how I'll track how I'm doing:
 
 <br>
 
-## Pacing
+## Pacing (Dynamic)
 
 [//]: # (<BigValue)
 
