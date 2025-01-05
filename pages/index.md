@@ -47,8 +47,8 @@ ORDER BY activity_year DESC
 ```
 
 
-Below are my activities for the past few years. You can see I took up running in lieu of biking in 2024 compared to the previous year.
-You can also see when I was injured and unable to run (November 2024 Weight Training frequency went up).
+Below are my activities for the past two years. 2024 was the year when I biked less and put more effort into running.
+The data also shows when I was injured in November 2024 and took up weight training instead.
 
 <Dropdown 
     name=sport_types
@@ -81,7 +81,10 @@ By cumulative moving time per day, the days where it surpassed 200mins were when
 
 Below is how far I've run by month. I was shocked to see myself reach 100km in September, but it makes sense given 
 that I was gunning for a half marathon that month and training to hit that (awful) 22km run. 
-In total, I ran 562km in 2024, a marked 29% improvement from the previous year!
+In total, I ran 562km in 2024, a marked 29% improvement from the previous year! 
+
+In the "Tracking Against 2025" page, I use this data to set and track against running goals for the new year.
+
 <BarChart
     data={all_activities_by_month.where(`sport_type = 'Run'`)}
     title="Running distance"
