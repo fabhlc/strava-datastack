@@ -12,7 +12,7 @@ title: Tracking Against 2025
   , goal*pct_of_month AS prorated_goal
   , CASE WHEN category = 'Actual' THEN distance>=prorated_goal 
     ELSE NULL END AS is_on_track
-  FROM strava_source.runs_against_goals
+  FROM strava_duck.runs_against_goals
   WHERE run_month >= '2024-06-01'
   ORDER BY run_month DESC
 ```

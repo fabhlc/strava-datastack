@@ -24,7 +24,8 @@ jobs:
         env:
           BASE_PATH: '/${{ github.event.repository.name }}'
           ## Add and uncomment any environment variables here
-          EVIDENCE_SOURCE__STRAVA_DATASTACK__FILENAME: ${{ secrets.EVIDENCE_SOURCE__STRAVA_DATASTACK__FILENAME   }}
+          EVIDENCE_DUCKDB_FILENAME: ${{ secrets.EVIDENCE_DUCKDB_FILENAME }}
+          EVIDENCE_DATABASE: ${{ secrets.EVIDENCE_DATABASE }}
         run: |
           npm run sources
           npm run build

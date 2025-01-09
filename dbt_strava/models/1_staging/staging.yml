@@ -4,7 +4,7 @@ sources:
   - name: strava
     config:
       enabled: true
-    schema: main
+    schema: strava
     tables:
       - name: full_load
 

@@ -1,5 +1,0 @@
-# This file was automatically generated
-name: strava_source
-type: duckdb
-options:
-  filename: ../../strava.duckdb
