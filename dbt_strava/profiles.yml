@@ -8,9 +8,9 @@ dbt_strava:
   outputs:
     dev:
       type: duckdb
-      schema: strava_dev
+      schema: dbt_models
       threads: 1
-      path: "../strava.duckdb"
+      path: "md:strava_duck"
 
     prod:
       type: duckdb

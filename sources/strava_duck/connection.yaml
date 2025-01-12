@@ -1,0 +1,8 @@
+# This file was automatically generated
+type: motherduck
+name: strava_duck
+options:
+  database: strava_duck
+# Advanced Options, you probably don't want to change this
+buildOptions:
+  batchSize: 1000000

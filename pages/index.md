@@ -6,14 +6,14 @@ neverShowQueries: true
 ```sql sport_types
   select distinct
       sport_type
-  from strava_source.activities_by_day
+  from strava_duck.activities_by_day
   where sport_type is not null
 ```
 
 ```sql all_activities_by_day
    SELECT
     *
-  FROM strava_source.activities_by_day
+  FROM strava_duck.activities_by_day
   WHERE activity_year < '2025-01-01'
   GROUP BY ALL
 ```
