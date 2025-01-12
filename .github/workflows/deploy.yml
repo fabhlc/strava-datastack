@@ -26,6 +26,7 @@ jobs:
           ## Add and uncomment any environment variables here
           EVIDENCE_SOURCE__strava_duck__token: ${{ secrets.EVIDENCE_SOURCE__MD__TOKEN }}
           EVIDENCE_SOURCE__strava_duck__database: ${{ secrets.EVIDENCE_SOURCE__STRAVA_DUCK__DATABASE }}
+          EVIDENCE_SOURCE__duckdb__filename: ${{ secrets.EVIDENCE_SOURCE__DUCKDB__FILENAME }}
         run: |
           npm run sources
           npm run build
