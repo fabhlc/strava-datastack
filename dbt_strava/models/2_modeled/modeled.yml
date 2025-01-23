@@ -24,3 +24,5 @@ models:
           - unique
   - name: modeled_weight_training_exercise_facts
     description: "Denormalized table for each exercise performed."
+  - name: modeled_weight_training_kpis
+    description: "Contains all-time and to-date info by exercise to identify PR events and PR metrics."
