@@ -1,7 +1,10 @@
 {{ config(
-    materialized='table'
+    materialized='table',
+    pre_hook="{{ parse_weight_training() }}"
     )
 }}
+-- parse_weight_training pre_hook macro depends_on: {{ ref('modeled_weight_training') }}
+
 
 WITH parsed_exercises AS (
     SELECT
@@ -16,15 +19,24 @@ WITH parsed_exercises AS (
 , cleansed_data AS (
   SELECT
     activity_at
-    , trim(exercise) AS exercise
-    , weight_lbs_or_level
-    , reps
-    , sets
+    , TRIM(exercise) AS exercise
+    , (CASE
+      WHEN weight_lbs_or_level = '-' THEN NULL -- replace() doesn't work here fsr...
+      ELSE TRIM(weight_lbs_or_level)
+      END)::FLOAT AS weight_lbs_or_level
+    , TRIM(reps)::INT AS reps
+    , TRIM(sets)::INT AS sets
   FROM parsed_exercises
   WHERE
     exercise IS NOT NULL
     AND exercise <> ''
-    AND weight_lbs_or_level NOT SIMILAR TO '[a-z]*'
+    AND TRIM(weight_lbs_or_level) NOT SIMILAR TO '[a-z]*'
 )
 
-SELECT * FROM cleansed_data
+SELECT
+  activity_at
+  , exercise
+  , weight_lbs_or_level
+  , reps
+  , sets
+FROM cleansed_data
