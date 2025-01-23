@@ -19,7 +19,7 @@ WITH parsed_exercises AS (
 , cleansed_data AS (
   SELECT
     activity_at
-    , TRIM(exercise) AS exercise
+    , LOWER(TRIM(exercise)) AS exercise
     , (CASE
       WHEN weight_lbs_or_level = '-' THEN NULL -- replace() doesn't work here fsr...
       ELSE TRIM(weight_lbs_or_level)
