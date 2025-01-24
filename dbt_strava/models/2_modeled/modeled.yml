@@ -26,3 +26,10 @@ models:
     description: "Denormalized table for each exercise performed."
   - name: modeled_weight_training_kpis
     description: "Contains all-time and to-date info by exercise to identify PR events and PR metrics."
+    columns:
+      - name: reps
+        data_type: integer
+      - name: sets
+        data_type: integer
+      - name: weight_lbs_or_level
+        data_type: float
