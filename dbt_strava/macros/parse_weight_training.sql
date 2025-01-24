@@ -37,30 +37,5 @@
         {% endfor %}
     {% endfor %}
 
-
-
 {% endif %}
 {% endmacro %}
-
-
---    {% set exercise_column_values = dbt_utils.get_column_values(
---        table=ref('modeled_weight_training'),
---        where="',' in description and start_at_local >= '2025-01-01' and length(description) > 0",
---        column='description'
---        ) %}
-
---    {% for record in exercise_column_values %}
---        {{print(record ~ "\nend record")}}
---        {% set tmp = record.split("\n") %}
---        {% for exercise in tmp %}
---            {% set execute_statement %}
---            insert into dbt_models.tmp values (1, '{{ exercise }}')
---            {% endset %}
---            {% do run_query(execute_statement) %}
---        {% endfor %}
---
---    {% endfor %}
-
-
-
---    {{ return(exercise_column) }}
