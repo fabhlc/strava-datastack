@@ -1,0 +1,1 @@
+SELECT * FROM dbt_models.reporting_weight_training_progress
