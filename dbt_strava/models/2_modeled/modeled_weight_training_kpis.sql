@@ -2,6 +2,7 @@ WITH ranked_exercises AS (
   SELECT
     activity_at
     , exercise
+    , muscle_group
     , reps
     , sets
     , weight_lbs_or_level
