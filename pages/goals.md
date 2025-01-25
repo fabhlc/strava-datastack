@@ -10,8 +10,6 @@ title: Tracking Against 2025
   , goal
   , (DATE_PART('day', CURRENT_DATE)/ DATE_PART('day', LAST_DAY(CURRENT_DATE)))::FLOAT AS pct_of_month
   , goal*pct_of_month AS prorated_goal
-  
-    
   , (CASE WHEN category = 'Actual' THEN distance>=prorated_goal
     ELSE NULL END)::BOOLEAN AS is_on_track
   FROM strava_duck.runs_against_goals
