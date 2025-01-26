@@ -10,8 +10,8 @@ title: Tracking Against 2025
   , goal
   , (DATE_PART('day', CURRENT_DATE)/ DATE_PART('day', LAST_DAY(CURRENT_DATE)))::FLOAT AS pct_of_month
   , goal*pct_of_month AS prorated_goal
-  , CASE WHEN category = 'Actual' THEN distance>=prorated_goal 
-    ELSE NULL END AS is_on_track
+  , (CASE WHEN category = 'Actual' THEN distance>=prorated_goal
+    ELSE NULL END)::BOOLEAN AS is_on_track
   FROM strava_duck.runs_against_goals
   WHERE run_month >= '2024-06-01'
   ORDER BY run_month DESC
@@ -45,30 +45,14 @@ Here's how I'll track how I'm doing:
 
 <br>
 
-## Pacing (Dynamic)
+## Pacing
 
-[//]: # (<BigValue)
-
-[//]: # (  data={runs})
-
-[//]: # (  value=total_distance_month)
-
-[//]: # (  sparkline=activity_month)
-
-[//]: # (  comparison=total_distance_month_growth)
-
-[//]: # (  comparisonFmt=pct1)
-
-[//]: # (  comparisonTitle="vs. Last Month")
-
-[//]: # (/>)
-
-{#if runs_against_goals_this_month[0].is_on_track = true}
+{#if runs_against_goals_this_month[0].is_on_track == true}
   <Alert status="positive">
   As of <b><Value data={today} fmt='longdate'/></b>, I'm on track to hit my monthly goal! 🚀
   </Alert> 
 
-{:else if runs_against_goals_this_month[0].is_on_track = false}
+{:else}
   <Alert status="danger">
   As of <b><Value data={today} fmt='longdate'/></b>, I'm a bit behind my goal. Let's pick up the pace!
   </Alert> 

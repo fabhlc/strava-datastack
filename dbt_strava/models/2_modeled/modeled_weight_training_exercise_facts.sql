@@ -19,7 +19,22 @@ WITH parsed_exercises AS (
 , cleansed_data AS (
   SELECT
     activity_at
-    , LOWER(TRIM(exercise)) AS exercise
+    , REPLACE(
+      REPLACE(
+      REPLACE(
+      REPLACE(
+      REPLACE(
+      REPLACE(
+      REPLACE(
+      LOWER(TRIM(exercise))
+      , 'dumb bell', 'dumbbell')
+      , 'dumbbell bicep curl', 'dumbbell curl')
+      , 'dumbbell push', 'dumbbell press')
+      , 'hanging crunches', 'hanging leg raises')
+      , '1', 'one')
+      , ' armed', '-armed')
+      , 'one-armed cable pulls', 'one-armed lat pulldowns')
+      AS exercise
     , (CASE
       WHEN weight_lbs_or_level = '-' THEN NULL -- replace() doesn't work here fsr...
       ELSE TRIM(weight_lbs_or_level)
@@ -33,10 +48,24 @@ WITH parsed_exercises AS (
     AND TRIM(weight_lbs_or_level) NOT SIMILAR TO '[a-z]*'
 )
 
+, cleansed_data_with_muscle_groups AS (
+  SELECT
+    facts.activity_at
+    , facts.exercise
+    , ref.muscle_group
+    , facts.weight_lbs_or_level
+    , facts.reps
+    , facts.sets
+  FROM cleansed_data AS facts
+  LEFT JOIN {{ ref('exercises_categorized_by_muscle_group') }} AS ref
+    ON facts.exercise = ref.exercise
+)
+
 SELECT
   activity_at
   , exercise
+  , muscle_group
   , weight_lbs_or_level
   , reps
   , sets
-FROM cleansed_data
+FROM cleansed_data_with_muscle_groups
