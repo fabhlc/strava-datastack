@@ -1,6 +1,7 @@
 {{ config(
     materialized='incremental',
-    unique_key='id')
+    unique_key='id',
+    tags=['weight_training'])
 }}
 
 -- Purpose of this model is to track running distances against goals

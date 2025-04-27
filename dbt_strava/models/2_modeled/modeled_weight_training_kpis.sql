@@ -26,7 +26,7 @@ WITH ranked_exercises AS (
       PARTITION BY exercise ORDER BY activity_at ASC
       ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
       ) AS max_to_date_composite_effort
-  FROM {{ ref('modeled_weight_training_exercise_facts') }}
+  FROM {{ ref('modeled_weight_training_exercise_facts_cleansed') }}
 )
 
 SELECT
