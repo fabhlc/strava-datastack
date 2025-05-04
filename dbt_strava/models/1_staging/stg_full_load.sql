@@ -10,7 +10,7 @@ SELECT
     , total_elevation_gain AS total_elevation_gain_meters
     , sport_type
     , start_date_local AS start_at
-    , start_at + INTERVAL 5 HOUR AS start_at_local -- TODO: original is not actually localized TZ.
+    , (start_at + INTERVAL 5 HOUR)::TIMESTAMP AS start_at_local -- TODO: original is not actually localized TZ.
     , achievement_count
     , kudos_count
     , description -- future data collection, assess how to capture
