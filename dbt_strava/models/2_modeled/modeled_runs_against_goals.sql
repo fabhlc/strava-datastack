@@ -1,7 +1,7 @@
 
 WITH actuals AS (
   SELECT
-    DATE_TRUNC('month', start_at_local) AS start_month
+    DATE_TRUNC('month', start_at_local::TIMESTAMP) AS start_month
       , SUM (distance) AS total_distance
       , CURRENT_LOCALTIME() AS load_at
   FROM {{ ref('modeled_running') }}
@@ -10,7 +10,7 @@ WITH actuals AS (
 
 , goals AS (
   SELECT
-    month
+    month::TIMESTAMP AS month
     , goal
   FROM {{ ref("stg_running_goals") }}
     )

@@ -42,6 +42,9 @@ select
 from ${exercises_agg_by_day}
 ```
 
+This page will remain pretty sparse as the data trickles in, but the intention is to track Personal Records
+and consistency of training different muscle groups.
+
 <Dropdown
     data={exercises} 
     name=muscle_group

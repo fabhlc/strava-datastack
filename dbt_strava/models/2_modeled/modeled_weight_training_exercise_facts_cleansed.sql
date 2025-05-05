@@ -1,25 +1,15 @@
 {{ config(
     materialized='table',
-    pre_hook="{{ parse_weight_training() }}"
+    tags=['weight_training']
     )
 }}
--- parse_weight_training pre_hook macro depends_on: {{ ref('modeled_weight_training') }}
 
-
-WITH parsed_exercises AS (
-    SELECT
-        activity_at
-        , split_part(exercise, ',', 1) AS exercise
-        , split_part(exercise, ',', 2) AS weight_lbs_or_level
-        , split_part(exercise, ',', 3) AS reps
-        , split_part(exercise, ',', 3) AS sets
-    FROM dbt_models.tmp
-    )
-
-, cleansed_data AS (
+WITH cleansed_data AS (
   SELECT
     activity_at
+    -- sad duckdb limitation:
     , REPLACE(
+      REPLACE(
       REPLACE(
       REPLACE(
       REPLACE(
@@ -34,18 +24,19 @@ WITH parsed_exercises AS (
       , '1', 'one')
       , ' armed', '-armed')
       , 'one-armed cable pulls', 'one-armed lat pulldowns')
+      , 'seated lat pulldowns', 'lat pulldowns')
       AS exercise
     , (CASE
       WHEN weight_lbs_or_level = '-' THEN NULL -- replace() doesn't work here fsr...
       ELSE TRIM(weight_lbs_or_level)
-      END)::FLOAT AS weight_lbs_or_level
+      END)::INTEGER AS weight_lbs_or_level
     , TRIM(reps)::INT AS reps
     , TRIM(sets)::INT AS sets
-  FROM parsed_exercises
+  FROM {{ ref('modeled_weight_training_exercise_facts_raw') }}
   WHERE
     exercise IS NOT NULL
     AND exercise <> ''
-    AND TRIM(weight_lbs_or_level) NOT SIMILAR TO '[a-z]*'
+    AND (TRIM(weight_lbs_or_level) SIMILAR TO '[0-9]+' OR TRIM(weight_lbs_or_level) = '-')
 )
 
 , cleansed_data_with_muscle_groups AS (

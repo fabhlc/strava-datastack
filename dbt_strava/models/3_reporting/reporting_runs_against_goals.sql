@@ -1,5 +1,5 @@
 SELECT
-  run_month
+  run_month::TIMESTAMPTZ AS run_month -- required for Evidence to not throw a fit
   , category
   , distance
   , goal
