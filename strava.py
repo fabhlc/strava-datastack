@@ -11,6 +11,7 @@ import numpy
 # Third-Party Imports
 import dlt
 from dlt.sources.helpers.rest_client.auth import OAuth2ClientCredentials
+from dlt.common.configuration.specs import configspec
 from dlt.sources.helpers.rest_client.paginators import PageNumberPaginator
 from dlt.sources.helpers.requests import Request
 from dlt.common.pendulum import pendulum
@@ -28,6 +29,7 @@ logging.basicConfig(
 # Set urllib3 logging level to DEBUG
 logging.getLogger("urllib3").setLevel(logging.DEBUG)
 
+@configspec
 class OAuth2ClientCredentialsHTTPRefresh(OAuth2ClientCredentials):
     def build_access_token_request(self) -> dict[str, Any]:
         # Refresh token request doesn't require authentication (or base64 encoding)
