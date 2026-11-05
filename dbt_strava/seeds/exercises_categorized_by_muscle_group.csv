@@ -1,32 +1,52 @@
-exercise,muscle_group, muscle_group2
-1-armed cable pulls,upper back,
-bent over dumbbell pulls,upper back,
-bulgarian squats,quads,
-cable side leg raises,outer quads,?
-close grip pull ups,upper back,?
-dumbbell calf raises,calves,
-dumbbell curls,biceps,
-dumbbell presses,chest,
-dumbbell rdls,hamstrings,back
-hamstring curls,hamstrings,
-hanging crunches,core,
-hanging leg raises,core,
-jackknives,core,
-jumping lunges,quads,
-lat pulldowns,upper back,
-one-armed lat pulldowns,upper back,
-pull ups,upper back,
-reverse dumbbell lunges,quads,
-rotator cuff rotations,shoulders,
-russian twists,core,
-seated landmines,core,
-seated leg extensions,quads,
-standing cable core rotations,core,
-superman holds,lower back,
-tricep cable pulldowns,triceps,
-warmup-incline treadmill,,
-warmup-treadmill,,
-close grip pullups,upper back,
-deltoid cable raises,deltoids,
-side step squats,quads,
-tricep cable extensions,triceps,
+exercise,muscle_group,aliases,typical_weight_lbs,times_seen
+bear crawl shoulder taps,back,,,2
+bicep curls,biceps,bicep dumbbell curls,20-20,2
+calf raises,calves,,40-50,2
+chest flyes,chest,dumbbell chest flyes,20-20,5
+chest presses,chest,dumbbell chest presses,40-80,
+push ups,chest,pushups,,1
+hanging crunches,core,,,1
+hanging leg raises,core,,,4
+isometric hip flexion,core,,,1
+jackknives,core,,10-10,3
+plank,core,,,1
+russian twists,core,,20-20,1
+seated landmines,core,,15-20,2
+standing cable core rotations,core,,50-50,1
+deltoid cable raises,deltoids,,20-20,1
+front cable raises,deltoids,,20-20,1
+lateral dumbbell raises,deltoids,,15-25,2
+burpees,full body,,,1
+clamshells,glutes,,,1
+dumbbell rdls,hamstrings,,50-50,1
+hamstring curls,hamstrings,,20-40,6
+single leg hamstring bridge,hamstrings,,,3
+glute medius cable pulls,legs,,30-50,2
+hip abductions,legs,outer thigh,,3
+hip adductions,legs,inner thigh,,3
+superman holds,lower back,,,1
+side plank,obliques,,,1
+side raises,obliques,,,1
+barbell squats,quads,,70-70,1
+bulgarian squats,quads,,40-40,2
+cable side leg raises,quads,,30-30,1
+dumbbell lunges,quads,,40-40,1
+jumping lunges,quads,,,5
+jumping squats,quads,,,1
+reverse dumbbell lunges,quads,,50-50,1
+seated leg extensions,quads,,80-80,2
+side step squats,quads,,30-30,1
+smith machine squats,quads,,70-70,1
+wall sits,quads,,,1
+landmine deceleration,shoulders,,0.-20,1
+rotator cuff cable pulls,shoulders,,20-20,1
+tricep cable extensions,triceps,tricep extensions|skullcrushers,30-30,2
+tricep cable pulldowns,triceps,tricep pulldowns,30-30,1
+1-armed cable pulls,upper back,,80-80,1
+bent over dumbbell pulls,upper back,,35-35,1
+close grip pull ups,upper back,close grip pullups,,3
+one-armed dumbbell row,upper back,,30-30,1
+pull ups,upper back,,,
+seated lat pulldowns,upper back,,60-120,2
+single lat pulldowns,upper back,single kneeling lat cable pulldowns|one-armed lat pulldowns|1-arm cable lat pulldowns,60-120,2
+hip flexor cable pulls,,,60-60,1
