@@ -76,11 +76,11 @@ Numbers are parsed in Python (regex) and stored in the same output table as the 
 ### 3. Canonical exercise list
 
 - **One seed, `dbt_strava/seeds/exercises_categorized_by_muscle_group.csv`, serves both dbt and the classifier.** There is no separate canonical file.
-  - Columns: `exercise`, `muscle_group`, `aliases`, `typical_weight_lbs`, `times_seen`.
+  - Columns: `exercise`, `muscle_group`, `aliases`, `typical_weight_lbs`.
   - dbt (`modeled_weight_training_exercise_facts_cleansed`) joins on `exercise` and reads `muscle_group`. The classifier reads `exercise`, `muscle_group`, `aliases` and `typical_weight_lbs`.
   - `exercise` must stay unique (case-insensitive), or the dbt join fans out rows.
   - The first version merged the original 31-row seed with 62 names from the 2025 CSV lines (65 rows total). The original values won where they overlapped.
-- `update-seed` appends new names from the 2025 CSV lines. It never changes existing rows except to fill a blank `typical_weight_lbs` and refresh `times_seen`.
+- `update-seed` appends new names from the 2025 CSV lines. It never changes existing rows except to fill a blank `typical_weight_lbs`.
 - Review the file manually: merge near-duplicates, fill `muscle_group`, add aliases.
 - After editing it, run `dbt seed --full-refresh --select exercises_categorized_by_muscle_group` so MotherDuck gets the new rows (`--full-refresh` because the columns changed).
 - Add `other_exercise` and `not_an_exercise`.

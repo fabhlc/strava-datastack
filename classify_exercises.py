@@ -8,7 +8,7 @@ Commands:
                     (name,weight,reps,sets) to dbt_strava/seeds/
                     exercises_categorized_by_muscle_group.csv. Append-only: existing
                     rows and your edits are never changed, only blank
-                    typical_weight_lbs and times_seen are filled. Read-only on MotherDuck.
+                    typical_weight_lbs is filled. Read-only on MotherDuck.
 
   backfill-numbers  Parse weight/reps/sets (regex, no API) for rows already in the table.
 
@@ -54,7 +54,7 @@ SECRETS_PATH = REPO / ".dlt" / "secrets.toml"
 # One seed serves both dbt (muscle group join) and this script (canonical exercise list).
 # dbt uses: exercise, muscle_group. This script also uses: aliases, typical_weight_lbs.
 SEED_CSV = REPO / "dbt_strava" / "seeds" / "exercises_categorized_by_muscle_group.csv"
-SEED_COLUMNS = ["exercise", "muscle_group", "aliases", "typical_weight_lbs", "times_seen"]
+SEED_COLUMNS = ["exercise", "muscle_group", "aliases", "typical_weight_lbs"]
 
 MD_DB = "strava_duck"
 SOURCE_TABLE = f"{MD_DB}.main.modeled_weight_training"
@@ -191,10 +191,9 @@ def update_seed() -> None:
         if name in by_name:  # never overwrite edits: fill blanks only
             row = by_name[name]
             row["typical_weight_lbs"] = row["typical_weight_lbs"] or typical
-            row["times_seen"] = str(counts[name])
         else:
             row = {c: "" for c in SEED_COLUMNS}
-            row.update(exercise=name, typical_weight_lbs=typical, times_seen=str(counts[name]))
+            row.update(exercise=name, typical_weight_lbs=typical)
             rows.append(row)
             by_name[name] = row
             added.append(name)
