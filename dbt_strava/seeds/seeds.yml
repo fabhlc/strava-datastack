@@ -12,4 +12,3 @@ seeds:
         muscle_group: varchar
         aliases: varchar
         typical_weight_lbs: varchar
-        times_seen: integer
