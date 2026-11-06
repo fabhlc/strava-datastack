@@ -4,3 +4,11 @@ seeds:
       enabled: true
       full_refresh: true
       schema: seeds
+  - name: exercises_categorized_by_muscle_group
+    description: "Exercise names with muscle groups. Also the canonical exercise list used by classify_exercises.py."
+    config:
+      column_types:
+        exercise: varchar
+        muscle_group: varchar
+        aliases: varchar
+        typical_weight_lbs: varchar
