@@ -301,12 +301,19 @@ def classify_line(line: str, choices: list[dict], valid_exercises: set[str], key
             line_type = "exercise"
         lt_conf = 1.0
 
+    reasons = []
+    seed_match = exercise in valid_exercises and exercise not in (OTHER, NOT_AN_EXERCISE)
+    if not is_csv and line_type != "exercise" and seed_match:
+        if ex_conf is not None and ex_conf >= CONFIDENCE_THRESHOLD:
+            line_type, lt_conf = "exercise", ex_conf
+        else:
+            reasons.append(f"typed {line_type} but may be seed exercise '{exercise}'")
+
     if line_type != "exercise":
         exercise, ex_conf = None, None
     elif exercise not in valid_exercises:
         exercise = OTHER
 
-    reasons = []
     if line_type is None or lt_conf is None or lt_conf < CONFIDENCE_THRESHOLD:
         reasons.append("low line_type confidence")
     if line_type == "exercise":
